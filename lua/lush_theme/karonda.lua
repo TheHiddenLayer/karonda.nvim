@@ -1,59 +1,31 @@
---
--- Built with,
---
---        ,gggg,
---       d8" "8I                         ,dPYb,
---       88  ,dP                         IP'`Yb
---    8888888P"                          I8  8I
---       88                              I8  8'
---       88        gg      gg    ,g,     I8 dPgg,
---  ,aa,_88        I8      8I   ,8'8,    I8dP" "8I
--- dP" "88P        I8,    ,8I  ,8'  Yb   I8P    I8
--- Yb,_,d88b,,_   ,d8b,  ,d8b,,8'_   8) ,d8     I8,
---  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
---
-
--- This is a starter colorscheme for use with Lush,
--- for usage guides, see :h lush or :LushRunTutorial
-
---
--- Note: Because this is lua file, vim will append your file to the runtime,
---       which means you can require(...) it in other lua code (this is useful),
---       but you should also take care not to conflict with other libraries.
---
---       (This is a lua quirk, as it has somewhat poor support for namespacing.)
---
---       Basically, name your file,
---
---       "super_theme/lua/lush_theme/super_theme_dark.lua",
---
---       not,
---
---       "super_theme/lua/dark.lua".
---
---       With that caveat out of the way...
---
-
--- Enable lush.ify on this file, run:
---
---  `:Lushify`
---
---  or
---
---  `:lua require('lush').ify()`
-
 local lush = require('lush')
 local hsl = lush.hsl
 
--- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
--- support an annotation like the following. Consult your server documentation.
+local palette = {
+  green = hsl(111, 100, 54),
+  light_green = hsl(94, 100, 74),
+  pink = hsl(326, 98, 59),
+  red = hsl(330, 100, 46),
+  background = {
+    light = hsl(0, 0, 18),
+    medium = hsl(0, 0, 7),
+    dark = hsl(0, 0, 0)
+  },
+  foreground = {
+    light = hsl(54, 108, 97),
+    medium = hsl(0, 0, 63),
+    dark = hsl(0, 0, 27)
+  },
+  aux = {
+    info = hsl(49, 93, 54),
+    error = hsl(0, 100, 60),
+    warning = hsl(24, 100, 50)
+  }
+}
+
 ---@diagnostic disable: undefined-global
 local theme = lush(function()
   return {
-    -- The following are all the Neovim default highlight groups from the docs
-    -- as of 0.5.0-nightly-446, to aid your theme creation. Your themes should
-    -- probably style all of these at a bare minimum.
-    --
     -- Referenced/linked groups must come before being referenced/lined,
     -- so the order shown ((mostly) alphabetical) is likely
     -- not the order you will end up with.
@@ -62,20 +34,47 @@ local theme = lush(function()
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
 
-    -- Comment      { }, -- any comment
-    -- ColorColumn  { }, -- used for the columns set with 'colorcolumn'
-    -- Conceal      { }, -- placeholder characters substituted for concealed text (see 'conceallevel')
-    -- Cursor       { }, -- character under the cursor
+    Comment {
+      fg = palette.foreground.dark,
+      gui = 'italic'
+    }, -- any comment
+    ColorColumn {
+      bg = palette.background.medium
+    }, -- used for the columns set with 'colorcolumn'
+    Conceal {
+      fg = palette.foreground.dark.darken(36)
+    }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+    -- Cursor {} -- character under the cursor
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM     { }, -- like Cursor, but used when in IME mode |CursorIM|
-    -- CursorColumn { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    -- CursorLine   { }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-    -- Directory    { }, -- directory names (and other special names in listings)
-    -- DiffAdd      { }, -- diff mode: Added line |diff.txt|
-    -- DiffChange   { }, -- diff mode: Changed line |diff.txt|
-    -- DiffDelete   { }, -- diff mode: Deleted line |diff.txt|
-    -- DiffText     { }, -- diff mode: Changed text within a changed line |diff.txt|
-    -- EndOfBuffer  { }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
+    CursorColumn {
+      bg = palette.background.medium
+    }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    CursorLine {
+      bg = palette.background.medium
+    }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    Directory {
+      fg = palette.foreground.light
+    }, -- directory names (and other special names in listings)
+    DiffAdd {
+      fg = palette.green,
+      bg = palette.green.darken(80)
+    }, -- diff mode: Added line |diff.txt|
+    DiffChange {
+      fg = palette.aux.info,
+      bg = palette.aux.info.darken(80)
+    }, -- diff mode: Changed line |diff.txt|
+    DiffDelete {
+      fg = palette.aux.error,
+      bg = palette.aux.error.darken(80)
+    }, -- diff mode: Deleted line |diff.txt|
+    DiffText {
+      fg = palette.aux.warning,
+      bg = palette.aux.warning.darken(80)
+    }, -- diff mode: Changed text within a changed line |diff.txt|
+    EndOfBuffer {
+      fg = palette.background.dark.lighten(18)
+    } -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- cursor in a focused terminal
     -- TermCursorNC { }, -- cursor in an unfocused terminal
     -- ErrorMsg     { }, -- error messages on the command line
