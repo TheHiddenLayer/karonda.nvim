@@ -1,28 +1,32 @@
 local lush = require('lush')
 local hsl = lush.hsl
 
+local gs = {
+  [0] = hsl(0, 0, 0),
+  [1] = hsl(0, 0, 9),
+  [2] = hsl(0, 0, 18),
+  [3] = hsl(0, 0, 27),
+  [4] = hsl(0, 0, 36),
+  [5] = hsl(0, 0, 45),
+  [6] = hsl(0, 0, 63),
+  [7] = hsl(0, 0, 72),
+  [8] = hsl(63, 97, 97)
+}
+
 local palette = {
   green = hsl(111, 100, 54),
   light_green = hsl(94, 100, 74),
   pink = hsl(326, 98, 59),
   red = hsl(330, 100, 46),
-  grayscale = {
-    [0] = hsl(0, 0, 0),
-    [1] = hsl(0, 0, 7),
-    [2] = hsl(0, 0, 18),
-    [3] = hsl(0, 0, 27),
-    [4] = hsl(0, 0, 72),
-    [5] = hsl(54, 108, 97)
-  },
   background = {
-    dark = grayscale[0],
-    medium = grayscale[1],
-    light = grayscale[2]
+    dark = gs[0],
+    medium = gs[1],
+    light = gs[2]
   },
   foreground = {
-    dark = grayscale[3],
-    medium = grayscale[4],
-    light = grayscale[5]
+    dark = gs[5],
+    medium = gs[7],
+    light = gs[8]
   },
   aux = {
     info = hsl(49, 93, 54),
@@ -43,42 +47,42 @@ local theme = lush(function()
     -- or leave them commented to apply vims default colouring or linking.
 
     Comment {
-      fg = palette.foreground.dark,
+      fg = palette.background.light,
       gui = 'italic'
     }, -- any comment
     ColorColumn {
       bg = palette.background.medium
     }, -- used for the columns set with 'colorcolumn'
     Conceal {
-      fg = palette.foreground.dark.darken(36)
+      fg = palette.background.medium
     }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     -- Cursor {} -- character under the cursor
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM     { }, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn {
-      bg = palette.background.medium
+      bg = palette.background.medium.darken(9)
     }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine {
-      bg = palette.background.medium
+      bg = palette.background.medium.darken(9)
     }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     Directory {
       fg = palette.foreground.light
     }, -- directory names (and other special names in listings)
     DiffAdd {
       fg = palette.green,
-      bg = palette.green.darken(80)
+      bg = palette.green.darken(81)
     }, -- diff mode: Added line |diff.txt|
     DiffChange {
       fg = palette.aux.info,
-      bg = palette.aux.info.darken(80)
+      bg = palette.aux.info.darken(81)
     }, -- diff mode: Changed line |diff.txt|
     DiffDelete {
       fg = palette.aux.error,
-      bg = palette.aux.error.darken(80)
+      bg = palette.aux.error.darken(81)
     }, -- diff mode: Deleted line |diff.txt|
     DiffText {
       fg = palette.aux.warning,
-      bg = palette.aux.warning.darken(80)
+      bg = palette.aux.warning.darken(81)
     }, -- diff mode: Changed text within a changed line |diff.txt|
     EndOfBuffer {
       fg = palette.background.dark.lighten(18)
@@ -87,14 +91,18 @@ local theme = lush(function()
     -- TermCursorNC { }, -- cursor in an unfocused terminal
     ErrorMsg {
       fg = palette.aux.error,
-      bg = palette.aux.warning.darken(80)
+      bg = palette.aux.warning.darken(81)
     }, -- error messages on the command line
     VertSplit {
-      fg = palette.background.light.lighten(20),
-      bg = palette.background.dark
+      fg = palette.background.medium.lighten(27),
+      bg = palette.background.dark -- or 'none'
     }, -- the column separating vertically split windows
-    -- Folded       { }, -- line used for closed folds
-    -- FoldColumn   { }, -- 'foldcolumn'
+    Folded {
+      bg = palette.background.medium
+    }, -- line used for closed folds
+    FoldColumn {
+      bg = palette.background.medium
+    }, -- 'foldcolumn'
     SignColumn {}, -- column where |signs| are displayed
     IncSearch {
       fg = palette.pink,
@@ -105,7 +113,7 @@ local theme = lush(function()
       bg = palette.aux.warning.darken(80)
     }, -- |:substitute| replacement text highlighting
     LineNr {
-      fg = palette.foreground.dark
+      fg = palette.background.light
     }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
     CursorLineNr {
       fg = palette.foreground.medium
@@ -117,24 +125,23 @@ local theme = lush(function()
     ModeMsg {}, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea {}, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
-    -- MoreMsg      { }, -- |more-prompt|
+    MoreMsg {
+      fg = palette.light_green
+    }, -- |more-prompt|
     NonText {
       fg = palette.foreground.dark.darken(36)
     }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal {
-      fg = palette.foreground.light,
-      bg = palette.background.dark
+      fg = palette.foreground.medium
     }, -- normal text
     NormalFloat {
-      fg = palette.foreground.light,
-      bg = palette.background.dark
+      fg = palette.foreground.medium
     }, -- Normal text in floating windows.
     NormalNC {
-      fg = palette.foreground.light,
-      bg = palette.background.dark
+      fg = palette.foreground.medium
     }, -- normal text in non-current windows
     Pmenu {
-      bg = palette.background.medium.lighten(7),
+      bg = palette.background.medium.lighten(8),
       fg = palette.foreground.light
     }, -- Popup menu: normal item.
     PmenuSel {
@@ -145,7 +152,7 @@ local theme = lush(function()
       bg = palette.foreground.light
     }, -- Popup menu: scrollbar.
     PmenuThumb {
-      bg = palette.background.medium.lighten(7)
+      bg = palette.background.medium.lighten(8)
     }, -- Popup menu: Thumb of the scrollbar.
     Question {
       fg = palette.foreground.light
@@ -158,9 +165,17 @@ local theme = lush(function()
       fg = palette.green,
       bg = palette.green.darken(80)
     }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-    -- SpecialKey   { }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    -- SpellBad     { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise. 
-    -- SpellCap     { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+    SpecialKey {
+      fg = palette.background.medium
+    }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+    SpellBad {
+      gui = 'underline',
+      fg = palette.aux.error
+    }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise. 
+    SpellCap {
+      fg = palette.aux.info,
+      gui = 'underline'
+    }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     -- SpellLocal   { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     -- SpellRare    { }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
     -- StatusLine   { }, -- status line of current window
@@ -168,66 +183,85 @@ local theme = lush(function()
     -- TabLine      { }, -- tab pages line, not active tab page label
     -- TabLineFill  { }, -- tab pages line, where there are no labels
     -- TabLineSel   { }, -- tab pages line, active tab page label
-    -- Title        { }, -- titles for output from ":set all", ":autocmd" etc.
-    -- Visual       { }, -- Visual mode selection
-    -- VisualNOS    { }, -- Visual mode selection when vim is "Not Owning the Selection".
-    -- WarningMsg   { }, -- warning messages
-    -- Whitespace   { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+    Title {
+      fg = palette.pink
+    }, -- titles for output from ":set all", ":autocmd" etc.
+    Visual {
+      fg = palette.background.dark,
+      bg = palette.foreground.light
+    }, -- Visual mode selection
+    VisualNOS {
+      fg = palette.background.light,
+      bg = palette.foreground.dark
+    }, -- Visual mode selection when vim is "Not Owning the Selection".
+    WarningMsg {
+      fg = palette.aux.warning
+    }, -- warning messages
+    Whitespace {
+      fg = palette.background.medium
+    }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
     -- WildMenu     { }, -- current match in 'wildmenu' completion
-
     -- These groups are not listed as default vim groups,
     -- but they are defacto standard group names for syntax highlighting.
     -- commented out groups should chain up to their "preferred" group by
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
-
-    -- Constant       { }, -- (preferred) any constant
+    Constant {
+      fg = palette.red
+    }, -- (preferred) any constant
     -- String         { }, --   a string constant: "this is a string"
     -- Character      { }, --  a character constant: 'c', '\n'
     -- Number         { }, --   a number constant: 234, 0xff
     -- Boolean        { }, --  a boolean constant: TRUE, false
     -- Float          { }, --    a floating point constant: 2.3e10
-
-    -- Identifier     { }, -- (preferred) any variable name
+    Identifier {
+      fg = gs[4]
+    }, -- (preferred) any variable name
     -- Function       { }, -- function name (also: methods for classes)
-
-    -- Statement      { }, -- (preferred) any statement
+    Statement {
+      fg = gs[7]
+    }, -- (preferred) any statement
     -- Conditional    { }, --  if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
     -- Operator       { }, -- "sizeof", "+", "*", etc.
     -- Keyword        { }, --  any other keyword
     -- Exception      { }, --  try, catch, throw
-
-    -- PreProc        { }, -- (preferred) generic Preprocessor
+    PreProc {
+      fg = palette.pink
+    }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
-
-    -- Type           { }, -- (preferred) int, long, char, etc.
+    Type {
+      fg = palette.green
+    }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
-
-    -- Special        { }, -- (preferred) any special symbol
+    Special {
+      fg = gs[7]
+    }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
     -- Tag            { }, --    you can use CTRL-] on this
     -- Delimiter      { }, --  character that needs attention
     -- SpecialComment { }, -- special things inside a comment
     -- Debug          { }, --    debugging statements
-
-    -- Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
+    Underlined {
+      gui = 'underline'
+    }, -- (preferred) text that stands out, HTML links
     Bold {
       gui = 'bold'
-    }, Italic {
+    }, -- bold text
+    Italic {
       gui = 'italic'
-    }
-
-    -- ("Ignore", below, may be invisible...)
+    }, -- ("Ignore", below, may be invisible...)
     -- Ignore         { }, -- (preferred) left blank, hidden  |hl-Ignore|
-
-    -- Error          { }, -- (preferred) any erroneous construct
+    Error {
+      fg = palette.aux.error,
+      bg = palette.aux.error.darken(81)
+    } -- (preferred) any erroneous construct
 
     -- Todo           { }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
