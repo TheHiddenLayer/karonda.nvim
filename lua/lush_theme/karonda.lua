@@ -6,15 +6,23 @@ local palette = {
   light_green = hsl(94, 100, 74),
   pink = hsl(326, 98, 59),
   red = hsl(330, 100, 46),
+  grayscale = {
+    [0] = hsl(0, 0, 0),
+    [1] = hsl(0, 0, 7),
+    [2] = hsl(0, 0, 18),
+    [3] = hsl(0, 0, 27),
+    [4] = hsl(0, 0, 72),
+    [5] = hsl(54, 108, 97)
+  },
   background = {
-    light = hsl(0, 0, 18),
-    medium = hsl(0, 0, 7),
-    dark = hsl(0, 0, 0)
+    dark = grayscale[0],
+    medium = grayscale[1],
+    light = grayscale[2]
   },
   foreground = {
-    light = hsl(54, 108, 97),
-    medium = hsl(0, 0, 63),
-    dark = hsl(0, 0, 27)
+    dark = grayscale[3],
+    medium = grayscale[4],
+    light = grayscale[5]
   },
   aux = {
     info = hsl(49, 93, 54),
@@ -74,34 +82,82 @@ local theme = lush(function()
     }, -- diff mode: Changed text within a changed line |diff.txt|
     EndOfBuffer {
       fg = palette.background.dark.lighten(18)
-    } -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
+    }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- cursor in a focused terminal
     -- TermCursorNC { }, -- cursor in an unfocused terminal
-    -- ErrorMsg     { }, -- error messages on the command line
-    -- VertSplit    { }, -- the column separating vertically split windows
+    ErrorMsg {
+      fg = palette.aux.error,
+      bg = palette.aux.warning.darken(80)
+    }, -- error messages on the command line
+    VertSplit {
+      fg = palette.background.light.lighten(20),
+      bg = palette.background.dark
+    }, -- the column separating vertically split windows
     -- Folded       { }, -- line used for closed folds
     -- FoldColumn   { }, -- 'foldcolumn'
-    -- SignColumn   { }, -- column where |signs| are displayed
-    -- IncSearch    { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    -- Substitute   { }, -- |:substitute| replacement text highlighting
-    -- LineNr       { }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    -- CursorLineNr { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    -- MatchParen   { }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-    -- ModeMsg      { }, -- 'showmode' message (e.g., "-- INSERT -- ")
-    -- MsgArea      { }, -- Area for messages and cmdline
+    SignColumn {}, -- column where |signs| are displayed
+    IncSearch {
+      fg = palette.pink,
+      bg = palette.pink.darken(80)
+    }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    Substitute {
+      fg = palette.aux.warning,
+      bg = palette.aux.warning.darken(80)
+    }, -- |:substitute| replacement text highlighting
+    LineNr {
+      fg = palette.foreground.dark
+    }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLineNr {
+      fg = palette.foreground.medium
+    }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    MatchParen {
+      bg = palette.background.light,
+      gui = 'bold'
+    }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    ModeMsg {}, -- 'showmode' message (e.g., "-- INSERT -- ")
+    MsgArea {}, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     -- MoreMsg      { }, -- |more-prompt|
-    -- NonText      { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    -- Normal       { }, -- normal text
-    -- NormalFloat  { }, -- Normal text in floating windows.
-    -- NormalNC     { }, -- normal text in non-current windows
-    -- Pmenu        { }, -- Popup menu: normal item.
-    -- PmenuSel     { }, -- Popup menu: selected item.
-    -- PmenuSbar    { }, -- Popup menu: scrollbar.
-    -- PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
-    -- Question     { }, -- |hit-enter| prompt and yes/no questions
-    -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    -- Search       { }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    NonText {
+      fg = palette.foreground.dark.darken(36)
+    }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Normal {
+      fg = palette.foreground.light,
+      bg = palette.background.dark
+    }, -- normal text
+    NormalFloat {
+      fg = palette.foreground.light,
+      bg = palette.background.dark
+    }, -- Normal text in floating windows.
+    NormalNC {
+      fg = palette.foreground.light,
+      bg = palette.background.dark
+    }, -- normal text in non-current windows
+    Pmenu {
+      bg = palette.background.medium.lighten(7),
+      fg = palette.foreground.light
+    }, -- Popup menu: normal item.
+    PmenuSel {
+      fg = palette.background.dark,
+      bg = palette.foreground.light
+    }, -- Popup menu: selected item.
+    PmenuSbar {
+      bg = palette.foreground.light
+    }, -- Popup menu: scrollbar.
+    PmenuThumb {
+      bg = palette.background.medium.lighten(7)
+    }, -- Popup menu: Thumb of the scrollbar.
+    Question {
+      fg = palette.foreground.light
+    }, -- |hit-enter| prompt and yes/no questions
+    QuickFixLine {
+      fg = palette.pink,
+      bg = palette.pink.darken(80)
+    }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    Search {
+      fg = palette.green,
+      bg = palette.green.darken(80)
+    }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     -- SpecialKey   { }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     -- SpellBad     { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise. 
     -- SpellCap     { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -162,8 +218,11 @@ local theme = lush(function()
     -- Debug          { }, --    debugging statements
 
     -- Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
-    -- Bold       { gui = "bold" },
-    -- Italic     { gui = "italic" },
+    Bold {
+      gui = 'bold'
+    }, Italic {
+      gui = 'italic'
+    }
 
     -- ("Ignore", below, may be invisible...)
     -- Ignore         { }, -- (preferred) left blank, hidden  |hl-Ignore|
