@@ -17,17 +17,12 @@
 
 ## Installation & Usage
 
-```
-Plug 'astrlux/karonda' " vimscript w/ VimPlug 
-use 'astrlux/karonda' -- lua w/ packer
-```
-```vim
-" Vimscript
-set termguicolors
-colorscheme karonda
-```
 ```lua
--- Lua
+use {
+  'astrlux/karonda',
+  requires = { 'rktjmp/lush.nvim' }
+}
+-- usage
 vim.opt.termguicolors = true
 vim.cmd 'colorscheme karonda'
 ```
