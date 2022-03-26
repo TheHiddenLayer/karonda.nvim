@@ -15,14 +15,11 @@
 
 > Support coming for `LspSaga`, and feel free to suggest more by writing an issue.
 
-## Installation & Usage
-
 ```lua
-use {
+use { -- INSTALL
   'astrlux/karonda',
   requires = { 'rktjmp/lush.nvim' }
 }
--- usage
-vim.opt.termguicolors = true
-vim.cmd 'colorscheme karonda'
+vim.opt.termguicolors = true 
+vim.cmd 'colorscheme karonda' -- USAGE
 ```
