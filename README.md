@@ -1,5 +1,16 @@
-A Lush Theme for Neovim.
+Karonda
 ===
 
-See: http://git.io/lush.nvim for more information on Lush and a helper script
-to setup your repo clone.
+Plug:  
+Plug 'astrlux/karonda'
+
+packer:
+use 'astrlux/karonda'
+
+Vim:  
+set termguicolors
+colorscheme karonda
+
+Lua:
+vim.o.termguicolors = true
+vim.cmd 'colorscheme karonda'
