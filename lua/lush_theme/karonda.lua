@@ -30,7 +30,7 @@ local palette = {
   },
   aux = {
     info = hsl(49, 93, 54),
-    error = hsl(0, 100, 60),
+    error = hsl(2, 100, 52),
     warning = hsl(24, 100, 50)
   }
 }
@@ -45,7 +45,6 @@ local theme = lush(function()
     -- You can uncomment these and leave them empty to disable any
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
-
     Comment {
       fg = palette.background.light,
       gui = 'italic'
@@ -63,7 +62,7 @@ local theme = lush(function()
       bg = palette.background.medium.darken(9)
     }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine {
-      bg = palette.background.medium.darken(9)
+      bg = gs[1].darken(40)
     }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     Directory {
       fg = palette.foreground.light
@@ -94,23 +93,23 @@ local theme = lush(function()
       bg = palette.aux.warning.darken(81)
     }, -- error messages on the command line
     VertSplit {
-      fg = palette.background.medium.lighten(27),
+      fg = palette.background.dark.lighten(9),
       bg = palette.background.dark -- or 'none'
     }, -- the column separating vertically split windows
     Folded {
-      bg = palette.background.medium
+      bg = gs[2]
     }, -- line used for closed folds
     FoldColumn {
-      bg = palette.background.medium
+      bg = gs[2]
     }, -- 'foldcolumn'
     SignColumn {}, -- column where |signs| are displayed
     IncSearch {
       fg = palette.pink,
-      bg = palette.pink.darken(80)
+      bg = palette.pink.darken(81)
     }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute {
       fg = palette.aux.warning,
-      bg = palette.aux.warning.darken(80)
+      bg = palette.aux.warning.darken(81)
     }, -- |:substitute| replacement text highlighting
     LineNr {
       fg = palette.background.light
@@ -119,7 +118,7 @@ local theme = lush(function()
       fg = palette.foreground.medium
     }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     MatchParen {
-      bg = palette.background.light,
+      fg = palette.aux.info,
       gui = 'bold'
     }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg {}, -- 'showmode' message (e.g., "-- INSERT -- ")
@@ -215,7 +214,7 @@ local theme = lush(function()
     -- Boolean        { }, --  a boolean constant: TRUE, false
     -- Float          { }, --    a floating point constant: 2.3e10
     Identifier {
-      fg = gs[3]
+      fg = gs[5]
     }, -- (preferred) any variable name
     Function {
       fg = palette.green
@@ -231,10 +230,10 @@ local theme = lush(function()
     }, --   for, do, while, etc.
     Label {}, --    case, default, etc.
     Operator {
-      fg = gs[8]
+      fg = gs[3]
     }, -- "sizeof", "+", "*", etc.
     Keyword {
-      fg = palette.red
+      fg = gs[4]
     }, --  any other keyword
     Exception {
       fg = palette.red
@@ -250,10 +249,14 @@ local theme = lush(function()
       fg = palette.light_green
     }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
-    -- Structure      { }, --  struct, union, enum, etc.
-    -- Typedef        { }, --  A typedef
+    Structure {
+      fg = palette.green
+    }, --  struct, union, enum, etc.
+    Typedef {
+      fg = palette.green
+    }, --  A typedef
     Special {
-      fg = gs[6]
+      fg = gs[5]
     }, -- (preferred) any special symbol
     SpecialChar {
       gui = 'bold',
@@ -268,8 +271,8 @@ local theme = lush(function()
       bg = palette.aux.info.darken(81)
     }, -- special things inside a comment
     Debug {
-      fg = gs[8]
-    }, --    debugging statements
+      fg = gs[7]
+    }, --  debugging statements
     Underlined {
       gui = 'underline'
     }, -- (preferred) text that stands out, HTML links
@@ -286,9 +289,9 @@ local theme = lush(function()
     }, -- (preferred) any erroneous construct
     Todo {
       gui = 'bold',
-      fg = palette.background.dark,
-      bg = palette.aux.info
-    } -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+      fg = palette.aux.info,
+      bg = palette.aux.info.darken(81)
+    }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client and diagnostic system. Some
     -- other LSP clients may use these groups, or use their own. Consult your
@@ -305,9 +308,15 @@ local theme = lush(function()
 
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
     --
-    -- DiagnosticError            { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    -- DiagnosticWarn             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    -- DiagnosticInfo             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticError {
+      fg = palette.aux.error
+    }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticWarn {
+      fg = palette.aux.warning
+    }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    DiagnosticInfo {
+      fg = palette.aux.info
+    }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     -- DiagnosticHint             { } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     -- DiagnosticVirtualTextError { } , -- Used for "Error" diagnostic virtual text.
     -- DiagnosticVirtualTextWarn  { } , -- Used for "Warn" diagnostic virtual text.
@@ -371,9 +380,15 @@ local theme = lush(function()
     -- TSTagAttribute       { } , -- HTML tag attributes.
     -- TSTagDelimiter       { } , -- Tag delimiters like `<` `>` `/`.
     -- TSText               { } , -- Non-structured text. Like text in a markup language.
-    -- TSStrong             { } , -- Text to be represented in bold.
-    -- TSEmphasis           { } , -- Text to be represented with emphasis.
-    -- TSUnderline          { } , -- Text to be represented with an underline.
+    TSStrong {
+      gui = 'bold'
+    }, -- Text to be represented in bold.
+    TSEmphasis {
+      gui = 'italic'
+    }, -- Text to be represented with emphasis.
+    TSUnderline {
+      gui = 'underline'
+    } -- Text to be represented with an underline.
     -- TSStrike             { } , -- Strikethrough text.
     -- TSTitle              { } , -- Text that is part of a title.
     -- TSLiteral            { } , -- Literal or verbatim text.
