@@ -8,13 +8,14 @@
 <img src="./assets/four.png"/>
 </details>
 
-Supported Plugins
-== 
+### Supported Plugins
 
 [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)  
 [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
-Support coming for `LspSaga`, and feel free to suggest more by writing an issue.
+> Support coming for `LspSaga`, and feel free to suggest more by writing an issue.
+
+## Installation & Usage
 
 ```
 Plug 'astrlux/karonda' " vimscript w/ VimPlug 
