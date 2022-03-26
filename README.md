@@ -8,9 +8,9 @@
 <img src="./assets/four.png"/>
 </details>
 
-```lua
-Plug 'astrlux/karonda' " vimscript
-use 'astrlux/karonda' -- lua
+```
+Plug 'astrlux/karonda' " vimscript w/ VimPlug 
+use 'astrlux/karonda' -- lua w/ packer
 ```
 ```vim
 " Vimscript
