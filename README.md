@@ -8,6 +8,10 @@ Karonda
 <img src="./assets/four.png"/>
 </details>
 
+```lua
+Plug 'astrlux/karonda' " vimscript
+use 'astrlux/karonda' -- lua
+```
 ```vim
 " Vimscript
 set termguicolors
