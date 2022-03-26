@@ -3,9 +3,9 @@
 
 <details><summary>Click for Pictures!</summary>
 <img src="./assets/one.png"/>
+<img src="./assets/four.png"/>
 <img src="./assets/two.png"/>
 <img src="./assets/three.png"/>
-<img src="./assets/four.png"/>
 </details>
 
 ### Supported Plugins
