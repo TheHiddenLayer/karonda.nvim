@@ -62,7 +62,7 @@ local theme = lush(function()
       bg = palette.background.medium.darken(9)
     }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine {
-      bg = gs[1].darken(40)
+      bg = gs[1].darken(27)
     }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     Directory {
       fg = palette.foreground.light
@@ -140,7 +140,7 @@ local theme = lush(function()
       fg = palette.foreground.medium
     }, -- normal text in non-current windows
     Pmenu {
-      bg = palette.background.medium.lighten(8),
+      bg = gs[1],
       fg = palette.foreground.light
     }, -- Popup menu: normal item.
     PmenuSel {
@@ -151,7 +151,7 @@ local theme = lush(function()
       bg = palette.foreground.light
     }, -- Popup menu: scrollbar.
     PmenuThumb {
-      bg = palette.background.medium.lighten(8)
+      bg = gs[1]
     }, -- Popup menu: Thumb of the scrollbar.
     Question {
       fg = palette.foreground.light
@@ -217,7 +217,7 @@ local theme = lush(function()
       fg = gs[5]
     }, -- (preferred) any variable name
     Function {
-      fg = palette.green
+      fg = palette.light_green
     }, -- function name (also: methods for classes)
     Statement {
       fg = gs[7]
@@ -226,9 +226,9 @@ local theme = lush(function()
       fg = palette.red
     }, --  if, then, else, endif, switch, etc.
     Repeat {
-      fg = palette.red
+      fg = gs[7]
     }, --   for, do, while, etc.
-    Label {}, --    case, default, etc.
+    -- Label {}, --    case, default, etc.
     Operator {
       fg = gs[3]
     }, -- "sizeof", "+", "*", etc.
@@ -236,7 +236,7 @@ local theme = lush(function()
       fg = gs[4]
     }, --  any other keyword
     Exception {
-      fg = palette.red
+      fg = gs[7]
     }, --  try, catch, throw
     PreProc {
       fg = gs[5]
@@ -246,14 +246,14 @@ local theme = lush(function()
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
     Type {
-      fg = palette.light_green
+      fg = gs[7]
     }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     Structure {
-      fg = palette.green
+      fg = palette.light_green
     }, --  struct, union, enum, etc.
     Typedef {
-      fg = palette.green
+      fg = palette.light_green
     }, --  A typedef
     Special {
       fg = gs[5]
