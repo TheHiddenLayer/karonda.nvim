@@ -11,7 +11,7 @@
 Supported Plugins
 == 
 
-[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)  
 [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
 Support coming for `LspSaga`, and feel free to suggest more by writing an issue.
