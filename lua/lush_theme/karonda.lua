@@ -3,14 +3,14 @@ local hsl = lush.hsl
 
 local gs = {
   [0] = hsl(0, 0, 0),
-  [1] = hsl(0, 0, 9),
-  [2] = hsl(0, 0, 18),
-  [3] = hsl(0, 0, 27),
-  [4] = hsl(0, 0, 36),
-  [5] = hsl(0, 0, 45),
-  [6] = hsl(0, 0, 63),
-  [7] = hsl(0, 0, 72),
-  [8] = hsl(63, 97, 97)
+  [1] = hsl(0, 0, 10),
+  [2] = hsl(0, 0, 20),
+  [3] = hsl(0, 0, 30),
+  [4] = hsl(0, 0, 40),
+  [5] = hsl(0, 0, 50),
+  [6] = hsl(0, 0, 60),
+  [7] = hsl(0, 0, 70),
+  [8] = hsl(63, 97, 100)
 }
 
 local palette = {
@@ -207,7 +207,7 @@ local theme = lush(function()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
     Constant {
-      fg = palette.red
+      fg = palette.pink
     }, -- (preferred) any constant
     -- String         { }, --   a string constant: "this is a string"
     -- Character      { }, --  a character constant: 'c', '\n'
@@ -215,39 +215,61 @@ local theme = lush(function()
     -- Boolean        { }, --  a boolean constant: TRUE, false
     -- Float          { }, --    a floating point constant: 2.3e10
     Identifier {
-      fg = gs[4]
+      fg = gs[3]
     }, -- (preferred) any variable name
-    -- Function       { }, -- function name (also: methods for classes)
+    Function {
+      fg = palette.green
+    }, -- function name (also: methods for classes)
     Statement {
       fg = gs[7]
     }, -- (preferred) any statement
-    -- Conditional    { }, --  if, then, else, endif, switch, etc.
-    -- Repeat         { }, --   for, do, while, etc.
-    -- Label          { }, --    case, default, etc.
-    -- Operator       { }, -- "sizeof", "+", "*", etc.
-    -- Keyword        { }, --  any other keyword
-    -- Exception      { }, --  try, catch, throw
+    Conditional {
+      fg = palette.red
+    }, --  if, then, else, endif, switch, etc.
+    Repeat {
+      fg = palette.red
+    }, --   for, do, while, etc.
+    Label {}, --    case, default, etc.
+    Operator {
+      fg = gs[8]
+    }, -- "sizeof", "+", "*", etc.
+    Keyword {
+      fg = palette.red
+    }, --  any other keyword
+    Exception {
+      fg = palette.red
+    }, --  try, catch, throw
     PreProc {
-      fg = palette.pink
+      fg = gs[5]
     }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
     Type {
-      fg = palette.green
+      fg = palette.light_green
     }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
     Special {
-      fg = gs[7]
+      fg = gs[6]
     }, -- (preferred) any special symbol
-    -- SpecialChar    { }, --  special character in a constant
+    SpecialChar {
+      gui = 'bold',
+      fg = palette.aux.info
+    }, --  special character in a constant
     -- Tag            { }, --    you can use CTRL-] on this
-    -- Delimiter      { }, --  character that needs attention
-    -- SpecialComment { }, -- special things inside a comment
-    -- Debug          { }, --    debugging statements
+    Delimiter {
+      fg = gs[8]
+    }, --  character that needs attention
+    SpecialComment {
+      fg = palette.aux.info,
+      bg = palette.aux.info.darken(81)
+    }, -- special things inside a comment
+    Debug {
+      fg = gs[8]
+    }, --    debugging statements
     Underlined {
       gui = 'underline'
     }, -- (preferred) text that stands out, HTML links
@@ -261,9 +283,12 @@ local theme = lush(function()
     Error {
       fg = palette.aux.error,
       bg = palette.aux.error.darken(81)
-    } -- (preferred) any erroneous construct
-
-    -- Todo           { }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    }, -- (preferred) any erroneous construct
+    Todo {
+      gui = 'bold',
+      fg = palette.background.dark,
+      bg = palette.aux.info
+    } -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client and diagnostic system. Some
     -- other LSP clients may use these groups, or use their own. Consult your
