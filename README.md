@@ -10,8 +10,6 @@ Karonda
 set termguicolors
 colorscheme karonda
 ```
-
-Lua:
 ```lua
 -- Lua
 vim.o.termguicolors = true
