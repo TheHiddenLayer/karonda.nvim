@@ -10,10 +10,11 @@
 
 ### Supported Plugins
 
-[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)  
-[telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-
-> Support coming for `LspSaga`, and feel free to suggest more by writing an issue.
+- [x] [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)  
+- [x] [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [x] [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [x] [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) 
+- [ ] [lspsaga.nvim](glepnir/lspsaga.nvim)
 
 ```lua
 use { -- INSTALL
