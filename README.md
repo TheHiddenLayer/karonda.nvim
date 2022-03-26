@@ -1,6 +1,10 @@
 Karonda
 ===
 
+<details><summary>Click for Pictures!</summary>
+<img src="./assets/one.png"/>
+</details>
+
 ```
 VimPlug:
 Plug 'astrlux/karonda'
@@ -10,7 +14,7 @@ use 'astrlux/karonda'
 ```
 
 Vim:  
-```vimscript
+```vim
 set termguicolors
 colorscheme karonda
 ```

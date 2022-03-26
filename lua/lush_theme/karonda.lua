@@ -2,7 +2,7 @@ local lush = require('lush')
 local hsl = lush.hsl
 
 local gs = {
-  [0] = hsl(0, 0, 0),
+  [0] = hsl(0, 0, 5),
   [1] = hsl(0, 0, 10),
   [2] = hsl(0, 0, 20),
   [3] = hsl(0, 0, 30),
