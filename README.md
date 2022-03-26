@@ -5,22 +5,15 @@ Karonda
 <img src="./assets/one.png"/>
 </details>
 
-```
-VimPlug:
-Plug 'astrlux/karonda'
-
-packer:
-use 'astrlux/karonda'
-```
-
-Vim:  
 ```vim
+" Vimscript
 set termguicolors
 colorscheme karonda
 ```
 
 Lua:
 ```lua
+-- Lua
 vim.o.termguicolors = true
 vim.cmd 'colorscheme karonda'
 ```
