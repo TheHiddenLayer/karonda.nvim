@@ -3,6 +3,7 @@ Karonda
 
 <details><summary>Click for Pictures!</summary>
 <img src="./assets/one.png"/>
+<img src="./assets/two.png"/>
 </details>
 
 ```vim

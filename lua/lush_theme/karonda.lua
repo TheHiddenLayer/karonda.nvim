@@ -84,7 +84,7 @@ local theme = lush(function()
       bg = palette.aux.warning.darken(81)
     }, -- diff mode: Changed text within a changed line |diff.txt|
     EndOfBuffer {
-      fg = palette.background.dark.lighten(18)
+      fg = gs[1]
     }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- cursor in a focused terminal
     -- TermCursorNC { }, -- cursor in an unfocused terminal
@@ -94,7 +94,7 @@ local theme = lush(function()
     }, -- error messages on the command line
     VertSplit {
       fg = palette.background.dark.lighten(9),
-      bg = palette.background.dark -- or 'none'
+      bg = 'none'
     }, -- the column separating vertically split windows
     Folded {
       bg = gs[2]
@@ -148,10 +148,10 @@ local theme = lush(function()
       bg = palette.foreground.light
     }, -- Popup menu: selected item.
     PmenuSbar {
-      bg = palette.foreground.light
+      bg = gs[2]
     }, -- Popup menu: scrollbar.
     PmenuThumb {
-      bg = gs[1]
+      bg = gs[7]
     }, -- Popup menu: Thumb of the scrollbar.
     Question {
       fg = palette.foreground.light
@@ -305,6 +305,10 @@ local theme = lush(function()
     -- LspCodeLens                 { } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
     -- LspCodeLensSeparator        { } , -- Used to color the seperator between two or more code lens.
     -- LspSignatureActiveParameter { } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
+    LspFloatWinBorder {
+      fg = gs[8],
+      bg = 'none'
+    },
 
     -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
     --
