@@ -1,4 +1,4 @@
-🍉 Karonda 🍒
+🍒 Karonda 🍉
 ===
 
 <details><summary>Click for Pictures!</summary>
@@ -7,6 +7,14 @@
 <img src="./assets/three.png"/>
 <img src="./assets/four.png"/>
 </details>
+
+Supported Plugins
+== 
+
+[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+[telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+
+Support coming for `LspSaga`, and feel free to suggest more by writing an issue.
 
 ```
 Plug 'astrlux/karonda' " vimscript w/ VimPlug 
@@ -19,6 +27,6 @@ colorscheme karonda
 ```
 ```lua
 -- Lua
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 vim.cmd 'colorscheme karonda'
 ```
