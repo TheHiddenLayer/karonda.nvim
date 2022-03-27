@@ -412,10 +412,24 @@ local theme = lush(function()
     CmpItemAbbrDeprecated {
       gui = 'strikethrough',
       fg = palette.aux.error
-    }, CmpItemAbbrMatch {
+    },
+    CmpItemAbbrMatch {
       fg = palette.red
-    }, CmpItemAbbrMatchFuzzy {
+    },
+    CmpItemAbbrMatchFuzzy {
       fg = palette.pink
+    }, -- PLUGIN: nvim-telescope/telescope.nvim
+    -- reference: telescope.builtin.highlights
+    TelescopeNormal {
+      fg = palette.foreground.dark
+    }, -- regular text and colors
+    TelescopeMatching {
+      fg = palette.foreground.light
+    }, -- fuzzy matches
+    TelescopeSelection {
+      fg = palette.pink,
+      bg = 'none',
+      gui='bold'
     }
   }
 end)
