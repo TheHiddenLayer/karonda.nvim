@@ -10,12 +10,11 @@ local gs = {
   [5] = hsl(0, 0, 50),
   [6] = hsl(0, 0, 60),
   [7] = hsl(0, 0, 70),
-  [8] = hsl(0, 0, 100)
+  [8] = hsl(0, 0, 90)
 }
 
 local palette = {
-  green = hsl(111, 100, 54),
-  light_green = hsl(94, 100, 74),
+  green = hsl(71, 96, 50),
   pink = hsl(326, 98, 59),
   red = hsl(330, 100, 46),
   background = {
@@ -217,7 +216,7 @@ local theme = lush(function()
       fg = palette.foreground.dark
     }, -- (preferred) any variable name
     Function {
-      fg = palette.light_green
+      fg = palette.green
     }, -- function name (also: methods for classes)
     Statement {
       fg = palette.foreground.medium
@@ -246,7 +245,7 @@ local theme = lush(function()
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
     Type {
-      fg = palette.light_green
+      fg = palette.green
     }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
