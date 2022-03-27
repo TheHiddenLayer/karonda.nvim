@@ -407,15 +407,34 @@ local theme = lush(function()
     -- TSTypeBuiltin        { } , -- Built-in types: `i32` in Rust.
     -- TSVariable           { } , -- Variable names that don't fit into other categories.
     -- TSVariableBuiltin    { } , -- Variable names defined by the language: `this` or `self` in Javascript.
+    --
+    --
     -- PLUGIN: hrsh7th/nvim-cmp
     -- reference: https://www.github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
     CmpItemAbbrDeprecated {
       gui = 'strikethrough',
       fg = palette.aux.error
-    }, CmpItemAbbrMatch {
+    }, -- deprecated completeopts
+    CmpItemAbbrMatch {
       fg = palette.red
-    }, CmpItemAbbrMatchFuzzy {
+    }, -- exact matches
+    CmpItemAbbrMatchFuzzy {
       fg = palette.pink
+    }, -- fuzzy matches
+    --
+    --
+    -- PLUGIN: nvim-telescope/telescope.nvim
+    -- reference: telescope.builtin.highlights
+    TelescopeNormal {
+      fg = palette.foreground.dark
+    }, -- regular text and colors
+    TelescopeMatching {
+      fg = palette.foreground.light
+    }, -- fuzzy matches
+    TelescopeSelection {
+      fg = palette.pink,
+      bg = 'none',
+      gui = 'bold'
     }
   }
 end)
