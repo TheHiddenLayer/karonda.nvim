@@ -10,7 +10,7 @@ local gs = {
   [5] = hsl(0, 0, 50),
   [6] = hsl(0, 0, 60),
   [7] = hsl(0, 0, 70),
-  [8] = hsl(63, 97, 100)
+  [8] = hsl(0, 0, 100)
 }
 
 local palette = {
@@ -131,13 +131,13 @@ local theme = lush(function()
       fg = palette.foreground.dark.darken(36)
     }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal {
-      fg = palette.foreground.medium
+      fg = palette.foreground.light.darken(18)
     }, -- normal text
     NormalFloat {
-      fg = palette.foreground.medium
+      fg = palette.foreground.light.darken(18)
     }, -- Normal text in floating windows.
     NormalNC {
-      fg = palette.foreground.medium
+      fg = palette.foreground.light.darken(18)
     }, -- normal text in non-current windows
     Pmenu {
       bg = gs[1],
