@@ -1,4 +1,6 @@
+<p align="center">
 <img align="center" width=630 src="./assets/karonda.svg"/>
+</p>
 
 <details><summary>Click for Pictures!</summary>
 <img src="./assets/1.png"/>
