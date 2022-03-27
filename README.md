@@ -8,6 +8,7 @@
 <img src="./assets/5.png"/>
 <img src="./assets/3.png"/>
 <img src="./assets/4.png"/>
+<img src="https://user-images.githubusercontent.com/37908451/160299518-e15db47d-473d-4ed1-b560-1623c2acc018.png"/>
 </details>
 
 ### Supported Plugins
