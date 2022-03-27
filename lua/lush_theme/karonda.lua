@@ -24,7 +24,7 @@ local palette = {
     light = gs[2]
   },
   foreground = {
-    dark = gs[4],
+    dark = gs[6],
     medium = gs[7],
     light = gs[8]
   },
@@ -131,13 +131,13 @@ local theme = lush(function()
       fg = palette.foreground.dark.darken(36)
     }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal {
-      fg = palette.foreground.light.darken(18)
+      fg = palette.foreground.light
     }, -- normal text
     NormalFloat {
-      fg = palette.foreground.light.darken(18)
+      fg = palette.foreground.light
     }, -- Normal text in floating windows.
     NormalNC {
-      fg = palette.foreground.light.darken(18)
+      fg = palette.foreground.light
     }, -- normal text in non-current windows
     Pmenu {
       bg = gs[1],
@@ -214,49 +214,45 @@ local theme = lush(function()
     -- Boolean        { }, --  a boolean constant: TRUE, false
     -- Float          { }, --    a floating point constant: 2.3e10
     Identifier {
-      fg = gs[5]
+      fg = palette.foreground.dark
     }, -- (preferred) any variable name
     Function {
       fg = palette.light_green
     }, -- function name (also: methods for classes)
     Statement {
-      fg = gs[7]
+      fg = palette.foreground.medium
     }, -- (preferred) any statement
     Conditional {
       fg = palette.red
     }, --  if, then, else, endif, switch, etc.
     Repeat {
-      fg = gs[7]
+      fg = palette.red
     }, --   for, do, while, etc.
     -- Label {}, --    case, default, etc.
     Operator {
       fg = gs[3]
     }, -- "sizeof", "+", "*", etc.
     Keyword {
-      fg = gs[4]
+      fg = palette.foreground.dark
     }, --  any other keyword
     Exception {
       fg = gs[7]
     }, --  try, catch, throw
     PreProc {
-      fg = gs[5]
+      fg = gs[4]
     }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
     Type {
-      fg = gs[7]
+      fg = palette.light_green
     }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
-    Structure {
-      fg = palette.light_green
-    }, --  struct, union, enum, etc.
-    Typedef {
-      fg = palette.light_green
-    }, --  A typedef
+    -- Structure      { }, --  struct, union, enum, etc.
+    -- Typedef        { }, --  A typedef
     Special {
-      fg = gs[5]
+      fg = gs[3]
     }, -- (preferred) any special symbol
     SpecialChar {
       gui = 'bold',
@@ -271,7 +267,7 @@ local theme = lush(function()
       bg = palette.aux.info.darken(81)
     }, -- special things inside a comment
     Debug {
-      fg = gs[7]
+      fg = gs[8]
     }, --  debugging statements
     Underlined {
       gui = 'underline'
@@ -361,7 +357,9 @@ local theme = lush(function()
     -- TSKeyword            { } , -- Keywords that don't fit into other categories.
     -- TSKeywordFunction    { } , -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
     -- TSKeywordOperator    { } , -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
-    -- TSKeywordReturn      { } , -- Keywords like `return` and `yield`.
+    TSKeywordReturn {
+      fg = palette.red
+    }, -- Keywords like `return` and `yield`.
     -- TSLabel              { } , -- GOTO labels: `label:` in C, and `::label::` in Lua.
     -- TSMethod             { } , -- Method calls and definitions.
     -- TSNamespace          { } , -- Identifiers referring to modules and namespaces.
@@ -372,7 +370,9 @@ local theme = lush(function()
     -- TSParameterReference { } , -- References to parameters of a function.
     -- TSProperty           { } , -- Same as `TSField`.
     -- TSPunctDelimiter     { } , -- Punctuation delimiters: Periods, commas, semicolons, etc.
-    -- TSPunctBracket       { } , -- Brackets, braces, parentheses, etc.
+    TSPunctBracket {
+      fg = palette.foreground.medium
+    }, -- Brackets, braces, parentheses, etc.
     -- TSPunctSpecial       { } , -- Special punctuation that doesn't fit into the previous categories.
     -- TSRepeat             { } , -- Keywords related to loops: `for`, `while`, etc.
     -- TSString             { } , -- String literals.
