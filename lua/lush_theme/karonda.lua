@@ -391,7 +391,7 @@ local theme = lush(function()
     }, -- Text to be represented with emphasis.
     TSUnderline {
       gui = 'underline'
-    } -- Text to be represented with an underline.
+    }, -- Text to be represented with an underline.
     -- TSStrike             { } , -- Strikethrough text.
     -- TSTitle              { } , -- Text that is part of a title.
     -- TSLiteral            { } , -- Literal or verbatim text.
@@ -407,6 +407,16 @@ local theme = lush(function()
     -- TSTypeBuiltin        { } , -- Built-in types: `i32` in Rust.
     -- TSVariable           { } , -- Variable names that don't fit into other categories.
     -- TSVariableBuiltin    { } , -- Variable names defined by the language: `this` or `self` in Javascript.
+    -- PLUGIN: hrsh7th/nvim-cmp
+    -- reference: https://www.github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
+    CmpItemAbbrDeprecated {
+      gui = 'strikethrough',
+      fg = palette.aux.error
+    }, CmpItemAbbrMatch {
+      fg = palette.red
+    }, CmpItemAbbrMatchFuzzy {
+      fg = palette.pink
+    }
   }
 end)
 
