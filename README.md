@@ -1,5 +1,4 @@
-🍒 Karonda 🍉
-===
+<img src="./assets/karonda.svg"/>
 
 <details><summary>Click for Pictures!</summary>
 <img src="./assets/1.png"/>
