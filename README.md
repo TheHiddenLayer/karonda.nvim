@@ -1,5 +1,5 @@
 <p align="center">
-<img align="center" width="100%" src="./assets/karonda.svg"/>
+<img align="center" width="100%" src="https://github.com/astrlux/assets/blob/master/img/karonda.svg?raw=true"/>
 </p>
 
 <details><summary>Click for Pictures!</summary>
