@@ -3,11 +3,11 @@
 </p>
 
 <details><summary>Click for Pictures!</summary>
-<img src="./assets/1.png"/>
-<img src="./assets/2.png"/>
-<img src="./assets/5.png"/>
-<img src="./assets/3.png"/>
-<img src="./assets/4.png"/>
+<img src="https://github.com/astrlux/assets/blob/master/img/1.png?raw=true"/>
+<img src="https://github.com/astrlux/assets/blob/master/img/2.png?raw=true"/>
+<img src="https://github.com/astrlux/assets/blob/master/img/5.png?raw=true"/>
+<img src="https://github.com/astrlux/assets/blob/master/img/3.png?raw=true"/>
+<img src="https://github.com/astrlux/assets/blob/master/img/4.png?raw=true"/>
 <img src="https://user-images.githubusercontent.com/37908451/160299518-e15db47d-473d-4ed1-b560-1623c2acc018.png"/>
 </details>
 
