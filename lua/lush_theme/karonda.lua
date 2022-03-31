@@ -103,8 +103,8 @@ local theme = lush(function()
     }, -- 'foldcolumn'
     SignColumn {}, -- column where |signs| are displayed
     IncSearch {
-      fg = palette.pink,
-      bg = palette.pink.darken(81)
+      fg = palette.green,
+      bg = palette.green.darken(81)
     }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute {
       fg = palette.aux.warning,
@@ -160,8 +160,8 @@ local theme = lush(function()
       bg = palette.pink.darken(80)
     }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     Search {
-      fg = palette.green,
-      bg = palette.green.darken(80)
+      fg = palette.pink,
+      bg = palette.pink.darken(80)
     }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     SpecialKey {
       fg = palette.background.medium
