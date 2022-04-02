@@ -29,7 +29,7 @@ You're welcome to request more plugins.
 
 ```lua
 use { -- INSTALL
-  'astrlux/karonda.nvim',
+  'astrlux/karonda',
   requires = { 'rktjmp/lush.nvim' }
 }
 vim.opt.termguicolors = true 
