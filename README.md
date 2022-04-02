@@ -25,13 +25,21 @@
 
 You're welcome to request more plugins.
 
-### Install & Use
+## Install & Use
 
+Lua with [packer](https://github.com/wbthomason/packer.nvim)
 ```lua
-use { -- INSTALL
+use {
   'astrlux/karonda',
   requires = { 'rktjmp/lush.nvim' }
 }
 vim.opt.termguicolors = true 
-vim.cmd 'colorscheme karonda' -- USE
+vim.cmd 'colorscheme karonda'
+```
+  
+Vim Script with [vim-plug](https://github.com/junegunn/vim-plug):
+```vim
+Plug 'astrlux/karonda', { 'branch': 'master' }
+set termguicolors=true
+colorscheme karonda
 ```
