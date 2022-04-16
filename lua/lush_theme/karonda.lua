@@ -429,12 +429,12 @@ local theme = lush(function()
       fg = palette.foreground.dark
     }, -- regular text and colors
     TelescopeMatching {
-      fg = palette.foreground.light
-    }, -- fuzzy matches
-    TelescopeSelection {
       fg = palette.pink,
       bg = 'none',
       gui = 'bold'
+    }, -- fuzzy matches
+    TelescopeSelection {
+      fg = palette.foreground.light
     }
   }
 end)
