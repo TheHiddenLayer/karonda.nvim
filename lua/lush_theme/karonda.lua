@@ -14,8 +14,8 @@ local gs = {
 }
 
 local palette = {
-  -- purple = hsl(71, 96, 50),
-  purple = hsl(265, 89, 78),
+  -- purple = hsl(265, 89, 78),
+  green = hsl(71, 96, 50),
   pink = hsl(326, 98, 59),
   red = hsl(330, 100, 46),
   background = {
@@ -68,8 +68,8 @@ local theme = lush(function()
       fg = palette.foreground.light
     }, -- directory names (and other special names in listings)
     DiffAdd {
-      fg = palette.purple,
-      bg = palette.purple.darken(81)
+      fg = palette.green,
+      bg = palette.green.darken(81)
     }, -- diff mode: Added line |diff.txt|
     DiffChange {
       fg = palette.aux.info,
@@ -104,8 +104,8 @@ local theme = lush(function()
     }, -- 'foldcolumn'
     SignColumn {}, -- column where |signs| are displayed
     IncSearch {
-      fg = palette.purple,
-      bg = palette.purple.darken(81)
+      fg = palette.green,
+      bg = palette.green.darken(81)
     }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     Substitute {
       fg = palette.aux.warning,
@@ -125,7 +125,7 @@ local theme = lush(function()
     MsgArea {}, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg {
-      fg = palette.light_purple
+      fg = palette.light_green
     }, -- |more-prompt|
     NonText {
       fg = palette.foreground.dark.darken(36)
@@ -217,7 +217,7 @@ local theme = lush(function()
       fg = palette.foreground.dark
     }, -- (preferred) any variable name
     Function {
-      fg = palette.purple
+      fg = palette.green
     }, -- function name (also: methods for classes)
     Statement {
       fg = palette.foreground.medium
@@ -246,7 +246,7 @@ local theme = lush(function()
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
     Type {
-      fg = palette.purple
+      fg = palette.green
     }, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
     -- Structure      { }, --  struct, union, enum, etc.
