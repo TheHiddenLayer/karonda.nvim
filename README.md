@@ -30,7 +30,7 @@ You're welcome to request more plugins.
 Lua with [packer](https://github.com/wbthomason/packer.nvim)
 ```lua
 use {
-  'thehiddenlayer/karonda',
+  'ubhattac/karonda',
   requires = { 'rktjmp/lush.nvim' }
 }
 vim.opt.termguicolors = true 
@@ -39,7 +39,7 @@ vim.cmd 'colorscheme karonda'
   
 Vim Script with [vim-plug](https://github.com/junegunn/vim-plug):
 ```vim
-Plug 'thehiddenlayer/karonda', { 'branch': 'master' }
+Plug 'ubhattac/karonda', { 'branch': 'master' }
 set termguicolors=true
 colorscheme karonda
 ```
