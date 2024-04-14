@@ -25,21 +25,39 @@
 
 You're welcome to request more plugins.
 
-## Install & Use
+### Install
 
-Lua with [packer](https://github.com/wbthomason/packer.nvim)
+[lazy.nvim](https://github.com/folke/lazy.nvim)
+```lua
+{
+  "TheHiddenLayer/karonda",
+  dependencies = { "rktjmp/lush.nvim' },
+}
+```
+
+[packer](https://github.com/wbthomason/packer.nvim)
 ```lua
 use {
-  'the-hidden-layer/karonda',
-  requires = { 'rktjmp/lush.nvim' }
+  "TheHiddenLayer/karonda",
+  requires = { "rktjmp/lush.nvim" }
 }
+```
+
+[vim-plug](https://github.com/junegunn/vim-plug):
+```vim
+Plug 'TheHiddenLayer/karonda', { 'branch': 'master' }
+```
+
+### Usage
+
+```lua
+-- lua
 vim.opt.termguicolors = true 
 vim.cmd 'colorscheme karonda'
 ```
-  
-Vim Script with [vim-plug](https://github.com/junegunn/vim-plug):
-```vim
-Plug 'the-hidden-layer/karonda', { 'branch': 'master' }
+
+```VimScript
+" vimscript
 set termguicolors=true
 colorscheme karonda
 ```
